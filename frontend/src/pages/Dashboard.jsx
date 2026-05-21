@@ -209,6 +209,15 @@ function Dashboard() {
     Generate MCQs for exams and interviews.
   </p>
 </Link>
+<Link
+  to="/study-planner"
+  className="bg-[#111] border border-gray-800 hover:border-cyan-400 p-5 rounded-2xl transition"
+>
+  <h4 className="text-lg font-bold text-cyan-400">Study Planner</h4>
+  <p className="text-gray-400 mt-3 text-sm">
+    Generate AI-based study plans.
+  </p>
+</Link>
 
           </Link>
 

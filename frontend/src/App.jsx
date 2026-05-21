@@ -10,6 +10,7 @@ import TaskManager from "./pages/TaskManager";
 import Analytics from "./pages/Analytics";
 import AIChat from "./pages/AIChat";
 import QuizGenerator from "./pages/QuizGenerator";
+import StudyPlanner from "./pages/StudyPlanner";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/analytics" element={<Analytics />} />
         <Route path="/ai-chat" element={<AIChat />} />
         <Route path="/quiz-generator" element={<QuizGenerator />} />
+        <Route path="/study-planner" element={<StudyPlanner />} />
       </Routes>
     </BrowserRouter>
   );
