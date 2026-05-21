@@ -1,93 +1,82 @@
-import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import axios from "axios";
+import React, { useState } from "react";
 
 function Register() {
-
-  const navigate = useNavigate();
-
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleRegister = async () => {
+  const handleRegister = async (e) => {
+    e.preventDefault();
 
     try {
-
-      const response = await axios.post(
-        "http://localhost:8080/api/auth/register",
+      const response = await fetch(
+        "https://studentos-ai-platform-1.onrender.com/api/auth/register",
         {
-          fullName,
-          email,
-          password,
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            fullName,
+            email,
+            password,
+          }),
         }
       );
 
-      alert("Registration Successful");
+      const data = await response.text();
 
-      navigate("/");
-
+      alert(data);
     } catch (error) {
-
-      alert("Registration Failed");
-
+      console.error("Error:", error);
+      alert("Server error");
     }
-
   };
 
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center">
-
-      <div className="bg-[#111] p-10 rounded-3xl w-[400px] border border-gray-800">
-
-        <h1 className="text-4xl font-bold text-cyan-400 text-center">
+    <div className="min-h-screen flex items-center justify-center bg-black text-white">
+      <form
+        onSubmit={handleRegister}
+        className="bg-[#111] p-8 rounded-2xl w-[350px]"
+      >
+        <h2 className="text-3xl font-bold mb-6 text-center text-cyan-400">
           Register
-        </h1>
+        </h2>
 
-        <div className="mt-8">
+        <input
+          type="text"
+          placeholder="Enter Full Name"
+          className="w-full p-3 mb-4 rounded bg-black border border-gray-700"
+          value={fullName}
+          onChange={(e) => setFullName(e.target.value)}
+          required
+        />
 
-          <input
-            type="text"
-            placeholder="Full Name"
-            className="w-full bg-black border border-gray-700 rounded-xl px-5 py-4 text-white outline-none focus:border-cyan-400"
-            value={fullName}
-            onChange={(e) => setFullName(e.target.value)}
-          />
+        <input
+          type="email"
+          placeholder="Enter Email"
+          className="w-full p-3 mb-4 rounded bg-black border border-gray-700"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
 
-          <input
-            type="email"
-            placeholder="Email"
-            className="w-full bg-black border border-gray-700 rounded-xl px-5 py-4 text-white outline-none focus:border-cyan-400 mt-6"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+        <input
+          type="password"
+          placeholder="Enter Password"
+          className="w-full p-3 mb-4 rounded bg-black border border-gray-700"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
 
-          <input
-            type="password"
-            placeholder="Password"
-            className="w-full bg-black border border-gray-700 rounded-xl px-5 py-4 text-white outline-none focus:border-cyan-400 mt-6"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-
-          <button
-            onClick={handleRegister}
-            className="w-full bg-cyan-400 text-black py-4 rounded-xl font-semibold mt-8"
-          >
-            Register
-          </button>
-
-          <p className="text-gray-400 text-center mt-6">
-            Already have an account?{" "}
-            <Link to="/" className="text-cyan-400">
-              Login
-            </Link>
-          </p>
-
-        </div>
-
-      </div>
-
+        <button
+          type="submit"
+          className="w-full bg-cyan-500 hover:bg-cyan-600 p-3 rounded font-semibold"
+        >
+          Register
+        </button>
+      </form>
     </div>
   );
 }
