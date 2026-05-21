@@ -4,22 +4,41 @@ import axios from "axios";
 function NotesGenerator() {
   const [topic, setTopic] = useState("");
   const [notes, setNotes] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const generateNotes = async () => {
+    if (!topic.trim()) {
+      alert("Please enter a topic");
+      return;
+    }
+
+    setLoading(true);
+    setNotes("");
+
     try {
       const res = await axios.post(
         "https://studentos-ai-platform-1.onrender.com/api/notes/generate",
-        { topic }
+        {
+          topic: topic,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
       );
 
       setNotes(res.data);
     } catch (error) {
-      setNotes("Error generating notes");
+      console.error("Notes API Error:", error);
+      setNotes("Error generating notes. Please check backend deployment.");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-black text-white p-8">
+    <div className="min-h-screen bg-black text-white p-6">
       <h1 className="text-3xl font-bold text-cyan-400">
         AI Notes Generator
       </h1>
@@ -28,7 +47,7 @@ function NotesGenerator() {
         Enter any topic and generate exam-ready notes.
       </p>
 
-      <div className="mt-8">
+      <div className="mt-6">
         <input
           type="text"
           placeholder="Enter topic like DBMS, Java, React..."
@@ -39,13 +58,14 @@ function NotesGenerator() {
 
         <button
           onClick={generateNotes}
-          className="mt-5 bg-cyan-400 text-black px-6 py-3 rounded-xl font-semibold"
+          disabled={loading}
+          className="mt-5 bg-cyan-400 text-black px-6 py-3 rounded-xl font-semibold disabled:opacity-50"
         >
-          Generate Notes
+          {loading ? "Generating..." : "Generate Notes"}
         </button>
       </div>
 
-      <div className="mt-8 bg-[#111] border border-gray-800 rounded-2xl p-6 whitespace-pre-line">
+      <div className="mt-8 bg-[#111] border border-gray-800 rounded-2xl p-6 whitespace-pre-line min-h-[180px]">
         {notes || "Your notes will appear here..."}
       </div>
     </div>
