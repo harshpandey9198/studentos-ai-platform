@@ -21,7 +21,7 @@ function Dashboard() {
       {/* Sidebar */}
       <aside className="w-60 bg-[#0b0b0b] border-r border-gray-800 p-5">
 
-        <h1 className="text-2xl font-bold text-cyan-400">
+        <h1 className="text-lg font-semibold text-cyan-400">
           StudentOS AI
         </h1>
 
@@ -95,7 +95,7 @@ function Dashboard() {
 
           </div>
 
-          <div className="w-12 h-12 rounded-full bg-cyan-400 text-black flex items-center justify-center font-bold text-lg">
+          <div className="w-10 h-10 rounded-full bg-cyan-400 text-black flex items-center justify-center font-bold text-sm">
             H
           </div>
 
@@ -105,31 +105,31 @@ function Dashboard() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
 
           <div className="bg-[#111] border border-gray-800 p-4 rounded-2xl">
-            <h3 className="text-cyan-400 text-lg font-semibold">
+            <h3 className="text-cyan-400 text-base font-semibold">
               AI Tools
             </h3>
 
-            <p className="text-3xl font-bold mt-3">
+            <p className="text-2xl font-bold mt-3">
               5+
             </p>
           </div>
 
           <div className="bg-[#111] border border-gray-800 p-4 rounded-2xl">
-            <h3 className="text-cyan-400 text-lg font-semibold">
+            <h3 className="text-cyan-400 text-base font-semibold">
               Study Progress
             </h3>
 
-            <p className="text-3xl font-bold mt-3">
+            <p className="text-2xl font-bold mt-3">
               72%
             </p>
           </div>
 
           <div className="bg-[#111] border border-gray-800 p-4 rounded-2xl">
-            <h3 className="text-cyan-400 text-lg font-semibold">
+            <h3 className="text-cyan-400 text-base font-semibold">
               Interview Ready
             </h3>
 
-            <p className="text-3xl font-bold mt-3">
+            <p className="text-2xl font-bold mt-3">
               80%
             </p>
           </div>
@@ -137,18 +137,18 @@ function Dashboard() {
         </div>
 
         {/* Quick Actions */}
-        <h3 className="text-2xl font-bold mt-10 mb-5">
+        <h3 className="text-xl font-bold mt-10 mb-5">
           Quick Actions
         </h3>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
 
           <Link
             to="/ai-chat"
             className="bg-[#111] border border-gray-800 hover:border-cyan-400 p-5 rounded-2xl transition"
           >
 
-            <h4 className="text-xl font-bold text-cyan-400">
+            <h4 className="text-lg font-bold text-cyan-400">
               AI Chat
             </h4>
 
@@ -163,7 +163,7 @@ function Dashboard() {
             className="bg-[#111] border border-gray-800 hover:border-cyan-400 p-5 rounded-2xl transition"
           >
 
-            <h4 className="text-xl font-bold text-cyan-400">
+            <h4 className="text-lg font-bold text-cyan-400">
               Notes Generator
             </h4>
 
@@ -178,7 +178,7 @@ function Dashboard() {
             className="bg-[#111] border border-gray-800 hover:border-cyan-400 p-5 rounded-2xl transition"
           >
 
-            <h4 className="text-xl font-bold text-cyan-400">
+            <h4 className="text-lg font-bold text-cyan-400">
               Interview Coach
             </h4>
 
@@ -193,7 +193,7 @@ function Dashboard() {
             className="bg-[#111] border border-gray-800 hover:border-cyan-400 p-5 rounded-2xl transition"
           >
 
-            <h4 className="text-xl font-bold text-cyan-400">
+            <h4 className="text-lg font-bold text-cyan-400">
               Resume Analyzer
             </h4>
 
