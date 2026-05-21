@@ -28,6 +28,9 @@ function App() {
         <Route path="/ai-chat" element={<AIChat />} />
         <Route path="/quiz-generator" element={<QuizGenerator />} />
         <Route path="/study-planner" element={<StudyPlanner />} />
+        <Route path="/resume-analyzer" element={<ResumeAnalyzer />} />
+<Route path="/task-manager" element={<TaskManager />} />
+<Route path="/analytics" element={<Analytics />} />
       </Routes>
     </BrowserRouter>
   );

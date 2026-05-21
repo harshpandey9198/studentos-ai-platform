@@ -1,49 +1,33 @@
+import { useState } from "react";
+import axios from "axios";
+
 function TaskManager() {
+  const [goal, setGoal] = useState("");
+  const [tasks, setTasks] = useState("");
+
+  const generateTasks = async () => {
+    const res = await axios.post("https://studentos-ai-platform-1.onrender.com/api/tasks/suggest", { goal });
+    setTasks(res.data);
+  };
+
   return (
-    <div className="min-h-screen bg-black text-white p-10">
+    <div className="min-h-screen bg-black text-white p-6">
+      <h1 className="text-3xl font-bold text-cyan-400">AI Task Manager</h1>
 
-      <h1 className="text-5xl font-bold text-cyan-400">
-        AI Task Manager
-      </h1>
+      <input
+        className="w-full mt-6 bg-[#111] border border-gray-700 rounded-xl p-4"
+        placeholder="Enter goal like Java Interview..."
+        value={goal}
+        onChange={(e) => setGoal(e.target.value)}
+      />
 
-      <p className="text-gray-400 mt-4 text-lg">
-        Organize your study and placement tasks smartly.
-      </p>
+      <button onClick={generateTasks} className="mt-4 bg-cyan-400 text-black px-6 py-3 rounded-xl font-semibold">
+        Generate Tasks
+      </button>
 
-      <div className="mt-12 bg-[#111] border border-gray-800 rounded-3xl p-10">
-
-        <input
-          type="text"
-          placeholder="Enter a task..."
-          className="w-full bg-black border border-gray-700 rounded-2xl px-5 py-4 outline-none focus:border-cyan-400"
-        />
-
-        <button className="mt-6 bg-cyan-400 text-black px-8 py-3 rounded-xl font-semibold">
-          Add Task
-        </button>
-
+      <div className="mt-6 bg-[#111] p-6 rounded-xl whitespace-pre-line">
+        {tasks || "Tasks will appear here..."}
       </div>
-
-      <div className="mt-12 space-y-6">
-
-        <div className="bg-[#111] border border-gray-800 rounded-2xl p-6 flex justify-between items-center">
-          <p>Complete React Router practice</p>
-
-          <span className="text-cyan-400">
-            Pending
-          </span>
-        </div>
-
-        <div className="bg-[#111] border border-gray-800 rounded-2xl p-6 flex justify-between items-center">
-          <p>Prepare Java interview questions</p>
-
-          <span className="text-green-400">
-            Completed
-          </span>
-        </div>
-
-      </div>
-
     </div>
   );
 }
