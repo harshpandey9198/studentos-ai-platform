@@ -1,47 +1,53 @@
-function NotesGenerator() {
-  return (
-    <div className="min-h-screen bg-black text-white p-10">
+import { useState } from "react";
+import axios from "axios";
 
-      <h1 className="text-5xl font-bold text-cyan-400">
+function NotesGenerator() {
+  const [topic, setTopic] = useState("");
+  const [notes, setNotes] = useState("");
+
+  const generateNotes = async () => {
+    try {
+      const res = await axios.post(
+        "https://studentos-ai-platform-1.onrender.com/api/notes/generate",
+        { topic }
+      );
+
+      setNotes(res.data);
+    } catch (error) {
+      setNotes("Error generating notes");
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-black text-white p-8">
+      <h1 className="text-3xl font-bold text-cyan-400">
         AI Notes Generator
       </h1>
 
-      <p className="text-gray-400 mt-4 text-lg">
-        Upload PDFs or topics and generate smart AI notes.
+      <p className="text-gray-400 mt-2">
+        Enter any topic and generate exam-ready notes.
       </p>
 
-      <div className="mt-12 bg-[#111] border border-gray-800 rounded-3xl p-10">
-
+      <div className="mt-8">
         <input
-          type="file"
-          className="w-full bg-black border border-gray-700 rounded-2xl px-5 py-6"
+          type="text"
+          placeholder="Enter topic like DBMS, Java, React..."
+          className="w-full bg-[#111] border border-gray-700 rounded-xl px-5 py-4 outline-none focus:border-cyan-400"
+          value={topic}
+          onChange={(e) => setTopic(e.target.value)}
         />
 
-        <textarea
-          placeholder="Or type any topic..."
-          className="w-full mt-8 bg-black border border-gray-700 rounded-2xl p-5 h-40 outline-none focus:border-cyan-400"
-        />
-
-        <button className="mt-8 bg-cyan-400 text-black px-8 py-3 rounded-xl font-semibold">
+        <button
+          onClick={generateNotes}
+          className="mt-5 bg-cyan-400 text-black px-6 py-3 rounded-xl font-semibold"
+        >
           Generate Notes
         </button>
-
       </div>
 
-      <div className="mt-12 bg-[#111] border border-gray-800 rounded-3xl p-8">
-
-        <h2 className="text-2xl text-cyan-400 font-semibold">
-          AI Generated Notes
-        </h2>
-
-        <p className="text-gray-400 mt-6 leading-8">
-          Machine Learning is a branch of Artificial Intelligence
-          that enables systems to learn from data without being
-          explicitly programmed...
-        </p>
-
+      <div className="mt-8 bg-[#111] border border-gray-800 rounded-2xl p-6 whitespace-pre-line">
+        {notes || "Your notes will appear here..."}
       </div>
-
     </div>
   );
 }
