@@ -1,9 +1,7 @@
 import { Link, useNavigate, Navigate } from "react-router-dom";
 
 function Dashboard() {
-
   const navigate = useNavigate();
-
   const isLoggedIn = localStorage.getItem("isLoggedIn");
 
   if (!isLoggedIn) {
@@ -15,216 +13,105 @@ function Dashboard() {
     navigate("/");
   };
 
+  const tools = [
+    { title: "AI Chat", desc: "Ask coding, placement, and study questions.", link: "/ai-chat", icon: "💬" },
+    { title: "Notes Generator", desc: "Generate short notes instantly for any topic.", link: "/notes-generator", icon: "📄" },
+    { title: "Quiz Generator", desc: "Create quizzes to test your knowledge.", link: "/quiz-generator", icon: "❓" },
+    { title: "Study Planner", desc: "Get a personalized study plan for your goals.", link: "/study-planner", icon: "📅" },
+    { title: "Resume Analyzer", desc: "Improve your resume with AI suggestions.", link: "/resume-analyzer", icon: "📌" },
+    { title: "Task Manager", desc: "Plan and organize your study tasks.", link: "/task-manager", icon: "✅" },
+    { title: "Interview Coach", desc: "Practice HR and technical interview questions.", link: "/interview-coach", icon: "🎤" },
+    { title: "Analytics", desc: "Track your overall progress and performance.", link: "/analytics", icon: "📊" },
+  ];
+
   return (
-    <div className="min-h-screen bg-black text-white flex">
+    <div className="min-h-screen flex bg-gradient-to-br from-pink-100 via-white to-pink-50 text-gray-900">
+      <aside className="w-[290px] bg-white/80 backdrop-blur-xl border-r border-pink-100 shadow-xl p-6">
+        <div className="text-center mt-6">
+          <div className="text-5xl mb-3">🎓</div>
+          <h1 className="text-4xl font-extrabold">
+            <span className="text-gray-900">Student</span>
+            <span className="text-pink-500">OS</span>
+          </h1>
+          <p className="text-gray-500 mt-2">AI Student Platform</p>
+        </div>
 
-      {/* Sidebar */}
-      <aside className="w-60 bg-[#0b0b0b] border-r border-gray-800 p-5">
-
-        <h1 className="text-lg font-semibold text-cyan-400">
-          StudentOS AI
-        </h1>
-
-        <p className="text-gray-500 mt-1 text-sm">
-          AI Student Dashboard
-        </p>
-
-        <nav className="mt-8 space-y-2">
-
-          <Link
-            to="/dashboard"
-            className="block bg-cyan-400 text-black px-4 py-2 rounded-xl font-semibold"
-          >
+        <nav className="mt-10 space-y-3">
+          <Link to="/dashboard" className="block bg-gradient-to-r from-pink-500 to-pink-400 text-white px-5 py-3 rounded-2xl font-bold shadow-lg">
             Dashboard
           </Link>
 
-          <Link
-            to="/ai-chat"
-            className="block text-gray-400 px-4 py-2 hover:bg-[#1a1a1a] rounded-xl"
-          >
-            AI Chat
-          </Link>
-
-          <Link
-            to="/notes-generator"
-            className="block text-gray-400 px-4 py-2 hover:bg-[#1a1a1a] rounded-xl"
-          >
-            Notes Generator
-          </Link>
-
-          <Link
-            to="/interview-coach"
-            className="block text-gray-400 px-4 py-2 hover:bg-[#1a1a1a] rounded-xl"
-          >
-            Interview Coach
-          </Link>
-
-          <Link
-            to="/resume-analyzer"
-            className="block text-gray-400 px-4 py-2 hover:bg-[#1a1a1a] rounded-xl"
-          >
-            Resume Analyzer
-          </Link>
-
+          {tools.slice(0, 6).map((tool) => (
+            <Link key={tool.title} to={tool.link} className="block text-gray-600 hover:text-pink-500 hover:bg-pink-50 px-5 py-3 rounded-2xl transition">
+              {tool.title}
+            </Link>
+          ))}
         </nav>
 
-        <button
-          onClick={handleLogout}
-          className="w-full mt-8 bg-red-500 hover:bg-red-600 py-2 rounded-xl font-semibold"
-        >
+        <button onClick={handleLogout} className="w-full mt-10 bg-gradient-to-r from-pink-500 to-pink-400 text-white py-3 rounded-2xl font-bold shadow-lg hover:scale-105 transition">
           Logout
         </button>
-
       </aside>
 
-      {/* Main Content */}
-      <main className="flex-1 p-6">
-
-        {/* Header */}
+      <main className="flex-1 p-8">
         <div className="flex justify-between items-center">
-
           <div>
-
-            <h2 className="text-3xl font-bold">
-              Welcome Back 👋
-            </h2>
-
-            <p className="text-gray-400 mt-2 text-sm">
-              Manage your study and AI tools in one place.
-            </p>
-
+            <h2 className="text-4xl font-bold text-gray-900">Welcome back, Harsh! 👋</h2>
+            <p className="text-gray-500 mt-2">Manage your study and AI tools in one place.</p>
           </div>
 
-          <div className="w-10 h-10 rounded-full bg-cyan-400 text-black flex items-center justify-center font-bold text-sm">
+          <div className="w-12 h-12 rounded-full bg-pink-500 text-white flex items-center justify-center font-bold text-lg">
             H
           </div>
-
         </div>
 
-        {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
-
-          <div className="bg-[#111] border border-gray-800 p-4 rounded-2xl">
-            <h3 className="text-cyan-400 text-base font-semibold">
-              AI Tools
-            </h3>
-
-            <p className="text-2xl font-bold mt-3">
-              5+
-            </p>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-5 mt-8">
+          <div className="bg-white rounded-3xl shadow-lg border border-pink-100 p-6">
+            <h3 className="text-gray-600 font-semibold">AI Tools Used</h3>
+            <p className="text-3xl font-bold mt-3 text-gray-900">5+</p>
+            <p className="text-pink-500 text-sm mt-2">Keep exploring!</p>
           </div>
 
-          <div className="bg-[#111] border border-gray-800 p-4 rounded-2xl">
-            <h3 className="text-cyan-400 text-base font-semibold">
-              Study Progress
-            </h3>
-
-            <p className="text-2xl font-bold mt-3">
-              72%
-            </p>
+          <div className="bg-white rounded-3xl shadow-lg border border-pink-100 p-6">
+            <h3 className="text-gray-600 font-semibold">Study Progress</h3>
+            <p className="text-3xl font-bold mt-3 text-gray-900">72%</p>
+            <div className="h-2 bg-gray-200 rounded-full mt-4">
+              <div className="h-2 bg-blue-500 rounded-full w-[72%]"></div>
+            </div>
           </div>
 
-          <div className="bg-[#111] border border-gray-800 p-4 rounded-2xl">
-            <h3 className="text-cyan-400 text-base font-semibold">
-              Interview Ready
-            </h3>
-
-            <p className="text-2xl font-bold mt-3">
-              80%
-            </p>
+          <div className="bg-white rounded-3xl shadow-lg border border-pink-100 p-6">
+            <h3 className="text-gray-600 font-semibold">Interview Ready</h3>
+            <p className="text-3xl font-bold mt-3 text-gray-900">80%</p>
+            <div className="h-2 bg-gray-200 rounded-full mt-4">
+              <div className="h-2 bg-green-500 rounded-full w-[80%]"></div>
+            </div>
           </div>
 
+          <div className="bg-white rounded-3xl shadow-lg border border-pink-100 p-6">
+            <h3 className="text-gray-600 font-semibold">Daily Streak</h3>
+            <p className="text-3xl font-bold mt-3 text-gray-900">7 Days</p>
+            <p className="text-orange-500 text-sm mt-2">Awesome!</p>
+          </div>
         </div>
 
-        {/* Quick Actions */}
-        <h3 className="text-xl font-bold mt-10 mb-5">
-          Quick Actions
-        </h3>
+        <h3 className="text-2xl font-bold mt-10 mb-5 text-gray-900">Your AI Tools</h3>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+          {tools.map((tool) => (
+            <Link key={tool.title} to={tool.link} className="bg-white rounded-3xl p-6 shadow-lg border border-pink-100 hover:shadow-2xl hover:-translate-y-1 transition flex items-center gap-5">
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-400 to-purple-500 flex items-center justify-center text-2xl">
+                {tool.icon}
+              </div>
 
-          <Link
-            to="/ai-chat"
-            className="bg-[#111] border border-gray-800 hover:border-cyan-400 p-5 rounded-2xl transition"
-          >
-
-            <h4 className="text-lg font-bold text-cyan-400">
-              AI Chat
-            </h4>
-
-            <p className="text-gray-400 mt-3 text-sm">
-              Ask coding, placement, and study questions.
-            </p>
-
-          </Link>
-
-          <Link
-            to="/notes-generator"
-            className="bg-[#111] border border-gray-800 hover:border-cyan-400 p-5 rounded-2xl transition"
-          >
-
-            <h4 className="text-lg font-bold text-cyan-400">
-              Notes Generator
-            </h4>
-
-            <p className="text-gray-400 mt-3 text-sm">
-              Generate short notes for exams.
-            </p>
-
-          </Link>
-
-          <Link
-            to="/interview-coach"
-            className="bg-[#111] border border-gray-800 hover:border-cyan-400 p-5 rounded-2xl transition"
-          >
-
-            <h4 className="text-lg font-bold text-cyan-400">
-              Interview Coach
-            </h4>
-
-            <p className="text-gray-400 mt-3 text-sm">
-              Practice HR and technical questions.
-            </p>
-
-          </Link>
-
-          <Link
-            to="/resume-analyzer"
-            className="bg-[#111] border border-gray-800 hover:border-cyan-400 p-5 rounded-2xl transition"
-          >
-
-            <h4 className="text-lg font-bold text-cyan-400">
-              Resume Analyzer
-            </h4>
-
-            <p className="text-gray-400 mt-3 text-sm">
-              Improve your resume for internships.
-            </p>
-            <Link
-  to="/quiz-generator"
-  className="bg-[#111] border border-gray-800 hover:border-cyan-400 p-5 rounded-2xl transition"
->
-  <h4 className="text-lg font-bold text-cyan-400">Quiz Generator</h4>
-  <p className="text-gray-400 mt-3 text-sm">
-    Generate MCQs for exams and interviews.
-  </p>
-</Link>
-<Link
-  to="/study-planner"
-  className="bg-[#111] border border-gray-800 hover:border-cyan-400 p-5 rounded-2xl transition"
->
-  <h4 className="text-lg font-bold text-cyan-400">Study Planner</h4>
-  <p className="text-gray-400 mt-3 text-sm">
-    Generate AI-based study plans.
-  </p>
-</Link>
-
-          </Link>
-
+              <div>
+                <h4 className="text-xl font-bold text-gray-900">{tool.title}</h4>
+                <p className="text-gray-500 mt-2 text-sm">{tool.desc}</p>
+              </div>
+            </Link>
+          ))}
         </div>
-
       </main>
-
     </div>
   );
 }
