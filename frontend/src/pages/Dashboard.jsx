@@ -200,6 +200,15 @@ function Dashboard() {
             <p className="text-gray-400 mt-3 text-sm">
               Improve your resume for internships.
             </p>
+            <Link
+  to="/quiz-generator"
+  className="bg-[#111] border border-gray-800 hover:border-cyan-400 p-5 rounded-2xl transition"
+>
+  <h4 className="text-lg font-bold text-cyan-400">Quiz Generator</h4>
+  <p className="text-gray-400 mt-3 text-sm">
+    Generate MCQs for exams and interviews.
+  </p>
+</Link>
 
           </Link>
 
