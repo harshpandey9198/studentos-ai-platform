@@ -22,11 +22,13 @@ function Login() {
         }
       );
 
-      const data = await response.text();
-      alert(data);
+      const data = await response.json();
 
-      if (data === "Login successful") {
+      alert(data.message);
+
+      if (data.message === "Login successful") {
         localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("token", data.token);
         navigate("/dashboard");
       }
     } catch (error) {
@@ -51,10 +53,6 @@ function Login() {
           Welcome Back! 👋
         </h2>
 
-        <p className="text-center text-gray-500 mt-2">
-          Login to continue your AI learning journey.
-        </p>
-
         <form onSubmit={handleLogin} className="mt-8">
           <input
             type="email"
@@ -74,10 +72,7 @@ function Login() {
             required
           />
 
-          <button
-            type="submit"
-            className="w-full bg-gradient-to-r from-pink-500 to-pink-400 text-white py-4 rounded-2xl font-bold shadow-lg hover:scale-105 transition"
-          >
+          <button className="w-full bg-gradient-to-r from-pink-500 to-pink-400 text-white py-4 rounded-2xl font-bold shadow-lg hover:scale-105 transition">
             Login
           </button>
         </form>
