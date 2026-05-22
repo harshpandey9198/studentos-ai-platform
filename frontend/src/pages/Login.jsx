@@ -6,9 +6,12 @@ function Login() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleLogin = async (e) => {
     e.preventDefault();
+
+    setLoading(true);
 
     try {
       const response = await fetch(
@@ -49,6 +52,8 @@ function Login() {
     } catch (error) {
       console.error("Login Error:", error);
       alert("Server error");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -95,9 +100,10 @@ function Login() {
 
           <button
             type="submit"
-            className="w-full bg-gradient-to-r from-pink-500 to-pink-400 text-white py-4 rounded-2xl font-bold shadow-lg hover:scale-105 transition"
+            disabled={loading}
+            className="w-full bg-gradient-to-r from-pink-500 to-pink-400 text-white py-4 rounded-2xl font-bold shadow-lg hover:scale-105 transition disabled:opacity-70"
           >
-            Login
+            {loading ? "Logging in..." : "Login"}
           </button>
         </form>
 
