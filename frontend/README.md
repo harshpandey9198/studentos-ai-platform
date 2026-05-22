@@ -1,16 +1,49 @@
-# React + Vite
+# StudentOS AI Platform 🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+StudentOS AI is a full-stack AI-powered student productivity platform designed to help students with learning, interview preparation, notes generation, quizzes, resume analysis, and study planning.
 
-Currently, two official plugins are available:
+## 🔗 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Frontend: https://studentos-ai-platform.vercel.app  
+Backend: https://studentos-ai-platform-1.onrender.com
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- User Login & Register
+- AI Chat Assistant
+- AI Notes Generator
+- AI Quiz Generator
+- AI Study Planner
+- Interview Coach
+- Resume Analyzer
+- Task Manager
+- Analytics Dashboard
+- Modern responsive UI
 
-## Expanding the ESLint configuration
+## 🛠 Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Frontend
+- React.js
+- Tailwind CSS
+- Axios
+- Vercel
+
+### Backend
+- Java
+- Spring Boot
+- REST APIs
+- Gemini AI API
+- Render
+
+## 📌 Project Highlights
+
+- Built full-stack REST API based architecture
+- Integrated AI features using Gemini API
+- Deployed frontend on Vercel
+- Deployed backend on Render
+- Designed modern SaaS-style dashboard UI
+
+## 👨‍💻 Developer
+
+Harsh Pandey  
+BCA Student | Full Stack Developer
