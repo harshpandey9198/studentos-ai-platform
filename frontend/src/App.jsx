@@ -10,7 +10,7 @@ import TaskManager from "./pages/TaskManager";
 import Analytics from "./pages/Analytics";
 import AIChat from "./pages/AIChat";
 import QuizGenerator from "./pages/QuizGenerator";
-import StudyPlanner from "./pages/StudyPlanner";
+
 
 function App() {
   return (
