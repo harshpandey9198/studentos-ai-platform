@@ -22,7 +22,15 @@ function Login() {
         }
       );
 
-      const data = await response.json();
+      const data = await response.text();
+
+alert(data);
+
+if (data.includes("Login successful")) {
+  localStorage.setItem("isLoggedIn", "true");
+  localStorage.setItem("token", data);
+  navigate("/dashboard");
+}
 
       alert(data.message);
 
