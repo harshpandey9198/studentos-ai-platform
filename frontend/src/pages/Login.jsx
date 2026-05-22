@@ -18,29 +18,36 @@ function Login() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ email, password }),
+          body: JSON.stringify({
+            email,
+            password,
+          }),
         }
       );
 
-      const data = await response.text();
+      const contentType = response.headers.get("content-type");
 
-alert(data);
+      let message = "";
+      let token = "";
 
-if (data.includes("Login successful")) {
-  localStorage.setItem("isLoggedIn", "true");
-  localStorage.setItem("token", data);
-  navigate("/dashboard");
-}
+      if (contentType && contentType.includes("application/json")) {
+        const data = await response.json();
+        message = data.message || "Login successful";
+        token = data.token || "";
+      } else {
+        message = await response.text();
+        token = message;
+      }
 
-      alert(data.message);
+      alert(message);
 
-      if (data.message === "Login successful") {
+      if (message.includes("Login successful")) {
         localStorage.setItem("isLoggedIn", "true");
-        localStorage.setItem("token", data.token);
+        localStorage.setItem("token", token);
         navigate("/dashboard");
       }
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Login Error:", error);
       alert("Server error");
     }
   };
@@ -50,16 +57,22 @@ if (data.includes("Login successful")) {
       <div className="w-full max-w-md bg-white/85 backdrop-blur-xl rounded-3xl shadow-2xl p-10 border border-pink-100">
         <div className="text-center">
           <div className="text-5xl mb-3">🎓</div>
+
           <h1 className="text-4xl font-extrabold">
             <span className="text-gray-900">Student</span>
             <span className="text-pink-500">OS</span>
           </h1>
+
           <p className="text-gray-500 mt-2">AI Student Platform</p>
         </div>
 
         <h2 className="text-2xl font-bold text-center mt-8 text-gray-900">
           Welcome Back! 👋
         </h2>
+
+        <p className="text-center text-gray-500 mt-2">
+          Login to continue your AI learning journey.
+        </p>
 
         <form onSubmit={handleLogin} className="mt-8">
           <input
@@ -80,7 +93,10 @@ if (data.includes("Login successful")) {
             required
           />
 
-          <button className="w-full bg-gradient-to-r from-pink-500 to-pink-400 text-white py-4 rounded-2xl font-bold shadow-lg hover:scale-105 transition">
+          <button
+            type="submit"
+            className="w-full bg-gradient-to-r from-pink-500 to-pink-400 text-white py-4 rounded-2xl font-bold shadow-lg hover:scale-105 transition"
+          >
             Login
           </button>
         </form>
