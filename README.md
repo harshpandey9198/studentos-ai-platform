@@ -10,6 +10,12 @@ StudentOS AI is an AI-powered student productivity and placement preparation pla
 - Placement Tracker
 - Learning Dashboard
 
+ ## 📸 Project Screenshots
+
+### Dashboard
+
+![Dashboard](https://github.com/harshpandey9198/studentos-ai-platform/blob/main/Screenshot%202026-05-23%20192508.png?raw=true)
+
 ## Tech Stack
 - React
 - Spring Boot
